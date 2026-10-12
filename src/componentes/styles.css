@@ -326,12 +326,15 @@ body {
 /* Cuerpo del modal (Inputs y etiquetas) */
 .modal-body {
   display: flex;
+  overflow-y: auto;
+  max-height: 400px;
   flex-direction: column;
   gap: 8px;
 }
 
 .modal-body label {
   font-size: 0.875rem;
+  
   font-weight: 500;
   color: #d1d5db;
 }
@@ -399,4 +402,16 @@ body {
 @keyframes scaleUp {
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+.resultado-juego {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre la foto y el texto */
+    padding: 8px;
+    cursor: pointer;
+}
+
+.resultado-juego:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Un pequeño sombreado al pasar el ratón */
 }
