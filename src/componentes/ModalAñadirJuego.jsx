@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../iconos/index'
 import { buscarJuegos } from '../servicios/rawg.js'
 
+// Componente para renderizar la ventana flotante que permite buscar nuevos juegos en la API externa y agregarlos a la biblioteca
 function ModalAñadirJuego({ cerrarModal, onAgregarJuego }) {
 
     const [busqueda, setBusqueda] = useState('')
     const [resultados, setResultados] = useState([])
 
+    // Funcion asincrona para realizar la peticion de busqueda de juegos segun el texto ingresado
     async function manejarBusqueda() {
         if (!busqueda.trim()) {
             return
@@ -48,18 +50,25 @@ function ModalAñadirJuego({ cerrarModal, onAgregarJuego }) {
                     />
 
                     {resultados.map((juego) => (
-                        <div 
-                            key={juego.id} 
+                        <div
+                            key={juego.id}
                             className="resultado-juego"
-                            
+
                             onClick={() => {
                                 onAgregarJuego(juego);
-                                cerrarModal();         
+                                cerrarModal();
                             }}
                         >
                             <img src={juego.background_image} alt={juego.name} width="50" />
                             <div>
                                 <h4>{juego.name}</h4>
+                            </div>
+                            <div>
+                                {juego.platforms && juego.platforms.map((item) => (
+                                    <span key={item.platform.id} className="tag-plataforma">
+                                        {item.platform.name}
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     ))}

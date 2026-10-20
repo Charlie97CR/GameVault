@@ -1,6 +1,6 @@
 /* ==========================================
-   1. RESET Y VARIABLES GLOBALES
-   ================================          */
+    RESET Y VARIABLES GLOBALES
+   ========================================== */
 :root {
   --bg-base: #0f1015;
   --bg-surface: #181920;
@@ -30,11 +30,9 @@ body {
   overflow-x: hidden;
 }
 
-
 /* ==========================================
-   2. DISEÑO GENERAL DE LA APP (App.jsx)
-   ================================          */
-/* Contenedor derecho que alberga el header y el contenido principal */
+    DISEÑO GENERAL DE LA APP (App.jsx)
+   ========================================== */
 .main-wrapper {
   flex: 1;
   display: flex;
@@ -42,7 +40,6 @@ body {
   overflow-y: auto;
 }
 
-/* Área donde se cargan las páginas (Ej. Biblioteca) */
 .content-area {
   padding: 36px;
   max-width: 1300px;
@@ -50,10 +47,9 @@ body {
   margin: 0 auto;
 }
 
-
 /* ==========================================
-   3. BARRA LATERAL (Sidebar.jsx)
-   ================================          */
+    BARRA LATERAL (Sidebar.jsx)
+   ========================================== */
 .sidebar {
   width: 260px;
   background-color: var(--bg-surface);
@@ -64,7 +60,18 @@ body {
   padding: 24px 16px;
 }
 
-/* Logotipo / Marca de la sidebar */
+.sidebar .nav-list a,
+.sidebar .nav-list button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -92,7 +99,6 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* Grupo y lista de navegación */
 .nav-group-title {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -134,10 +140,9 @@ body {
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
 }
 
-
 /* ==========================================
-   4. BARRA SUPERIOR (Header.jsx)
-   ================================          */
+    BARRA SUPERIOR (Header.jsx)
+   ========================================== */
 .topbar {
   height: 72px;
   border-bottom: 1px solid var(--border-color);
@@ -152,7 +157,6 @@ body {
   z-index: 10;
 }
 
-/* Caja de búsqueda del header */
 .search-box {
   display: flex;
   align-items: center;
@@ -174,7 +178,6 @@ body {
   width: 100%;
 }
 
-/* Acciones y perfil de usuario en el header */
 .topbar-actions {
   display: flex;
   align-items: center;
@@ -200,10 +203,9 @@ body {
   font-weight: 600;
 }
 
-
 /* ==========================================
-   5. BOTONES GLOBALES (Ej. Añadir Juego)
-   ================================          */
+    BOTONES GLOBALES
+   ========================================== */
 .btn-primary {
   background: var(--accent);
   color: white;
@@ -223,10 +225,26 @@ body {
   background: var(--accent-hover);
 }
 
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: #d1d5db;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
 
 /* ==========================================
-   6. VISTA BIBLIOTECA (Biblioteca.jsx)
-   ================================          */
+    VISTA BIBLIOTECA (Biblioteca.jsx)
+   ========================================== */
 .biblioteca {
   width: 100%;
 }
@@ -250,12 +268,107 @@ body {
   font-size: 14px;
 }
 
+.biblioteca-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
 
 /* ==========================================
-   7. MODAL AÑADIR JUEGO (ModalAñadirJuego.jsx)
-   ================================          */
+    TARJETAS DE JUEGO (GameCard.jsx)
+   ========================================== */
+.game-card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  position: relative;
+}
 
-/* Fondo oscuro difuminado con animación de aparición */
+.game-card-menu-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.game-card-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.game-card-menu-btn {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-card-image-container {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
+.game-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-card-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.game-card-info h3 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-card-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.tag-plataforma {
+  font-size: 0.75rem;
+  background-color: #2a2a40;
+  color: #a0a0c0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ==========================================
+    MODAL AÑADIR JUEGO (ModalAñadirJuego.jsx)
+   ========================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -266,9 +379,8 @@ body {
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.25s ease-out forwards;
-} 
+}
 
-/* Ventana principal del modal */
 .modal {
   width: 500px;
   max-width: 90%;
@@ -283,7 +395,6 @@ body {
   animation: scaleUp 0.25s ease-out forwards;
 }
 
-/* Cabecera del modal */
 .modal-header {
   display: flex;
   align-items: center;
@@ -306,7 +417,6 @@ body {
   color: var(--accent);
 }
 
-/* Botón flotante para cerrar (la X) */
 .modal-close-icon {
   background: transparent;
   border: none;
@@ -323,7 +433,6 @@ body {
   color: #ffffff;
 }
 
-/* Cuerpo del modal (Inputs y etiquetas) */
 .modal-body {
   display: flex;
   overflow-y: auto;
@@ -334,7 +443,6 @@ body {
 
 .modal-body label {
   font-size: 0.875rem;
-  
   font-weight: 500;
   color: #d1d5db;
 }
@@ -361,7 +469,6 @@ body {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-/* Pie del modal (Botones de acción) */
 .modal-footer {
   display: flex;
   align-items: center;
@@ -370,48 +477,231 @@ body {
   padding-top: 8px;
 }
 
-.modal-footer button {
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 500;
+.resultado-juego {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
-.btn-secondary {
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  color: #d1d5db;
-}
-
-.btn-secondary:hover {
+.resultado-juego:hover {
   background-color: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+}
+
+/* Contenedor de géneros separado abajo */
+.game-card-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+/* Estilo opcional para diferenciar visualmente la etiqueta de género */
+.tag-genero {
+  font-size: 0.75rem;
+  background-color: #3b2d4a;
+  color: #d8b4fe;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Caja del menú desplegable */
+.game-card-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #1e1e24;
+    border: 1px solid #2a2a35;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.game-card-dropdown button {
+    background: transparent;
+    border: none;
+    color: #e2e8f0;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.game-card-dropdown button.btn-completado {
+    color: #34d399;
+}
+
+.game-card-dropdown button.btn-pendiente {
+    color: #facc15;
+}
+
+.game-card-dropdown button.btn-dropeado {
+    color: #f87171;
+}
+
+.game-card-dropdown button:hover {
+    background-color: #2a2a35;
+}
+
+.dropdown-divider {
+    border: none;
+    border-top: 1px solid #2a2a35;
+    margin: 0;
+}
+
+.btn-eliminar {
+    color: #FFFF !important;
+}
+
+/* Contenedor relativo de la imagen para anclar la etiqueta y el menú */
+.game-card-image-container {
+    position: relative;
+    width: 100%;
+    height: 160px; /* Ajusta según la altura que tenga tu tarjeta */
+    overflow: hidden;
+}
+
+.game-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.estado-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Al lado opuesto o acomodada arriba */
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+/* Si quieres que el botón de los 3 puntos no choque, colócalo en la esquina superior izquierda, o viceversa */
+.game-card-menu-container {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Cambiado a la izquierda para dejar libre la derecha para el badge, o ajústalo a tu gusto */
+    z-index: 10;
+}
+
+/* Colores de las etiquetas basados en tu referencia visual */
+.estado-biblioteca {
+    background-color: #d97706; /* Naranja estilo 'Jugando' */
+}
+
+.estado-completado {
+    background-color: #059669; /* Verde esmeralda */
+}
+
+.estado-pendiente {
+    background-color: #d97706; /* Ámbar / Naranja oscuro */
+}
+
+.estado-dropeado {
+    background-color: #dc2626; /* Rojo alerta */
+}
+
+/* Cabecera de la biblioteca */
+.biblioteca-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del selector de ordenamiento */
+.biblioteca-ordenamiento {
+    position: relative;
+    display: inline-block;
+}
+
+/* Icono dentro del select de orden */
+.orden-icono {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+    font-size: 0.85rem;
+    z-index: 2;
+}
+
+/* Estilo del menú desplegable de orden */
+.select-ordenar {
+    background-color: #1f1f23;
+    color: #fff;
+    border: 1px solid #374151;
+    padding: 8px 14px 8px 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-ordenar:focus {
+    outline: none;
+    border-color: #7c3aed; /* Color de acento morado estilo Twitch/Stitch */
+}
+
+.sidebar .nav-list button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-counter {
+    background-color: #27272a;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
 
 /* ==========================================
-   8. ANIMACIONES
-   ================================          */
+    ANIMACIONES
+   ========================================== */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.resultado-juego {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Espacio entre la foto y el texto */
-    padding: 8px;
-    cursor: pointer;
-}
-
-.resultado-juego:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Un pequeño sombreado al pasar el ratón */
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
