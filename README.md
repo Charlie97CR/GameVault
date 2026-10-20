@@ -1,16 +1,22 @@
-# React + Vite
+# 🎮 GameVault
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GameVault es una aplicación web full-stack diseñada para gestionar y organizar tu colección personal de videojuegos. Permite buscar títulos mediante una API externa, guardarlos en una base de datos local y clasificarlos según tu progreso actual (completados, pendientes o dropeados).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Características Principales
 
-## React Compiler
+* **Búsqueda en Tiempo Real**: Conexión directa con la API de RAWG para encontrar cualquier videojuego al instante.
+* **Gestión de Biblioteca**: Guarda juegos con sus respectivas portadas, plataformas y géneros.
+* **Control de Estados**: Organiza tu biblioteca filtrando entre juegos pendientes, completados o dropeados con contadores dinámicos.
+* **Ordenamiento Dinámico**: Ordena tu colección por fecha de registro (más reciente) o alfabéticamente (A-Z / Z-A).
+* **Diseño Responsivo**: Interfaz limpia y moderna adaptada para una experiencia fluida.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend**: React, Vite, CSS y FontAwesome.
+* **Backend**: Node.js, Express y CORS.
+* **Base de Datos**: MySQL (utilizando `mysql2` con soporte para promesas).
+* **API Externa**: RAWG Video Games Database API.
